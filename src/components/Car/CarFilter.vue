@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     getMakes() {
-      const path = "http://192.168.1.112:7070/api/v1.0/makes/";
+      const path = "http://localhost:7070/api/v1.0/makes/";
       axios
         .get(path)
         .then(response => {
@@ -126,7 +126,7 @@ export default {
         });
     },
     getModels() {
-      const path = "http://192.168.1.112:7070/api/v1.0/makes/";
+      const path = "http://localhost:7070/api/v1.0/makes/";
       axios
         .get(path, {
           params: {
@@ -142,7 +142,7 @@ export default {
         });
     },
     getFilter() {
-      const path = "http://192.168.1.112:7070/api/v1.0/cars/";
+      const path = "http://localhost:7070/api/v1.0/cars/";
       axios
         .get(path, {
           params: {

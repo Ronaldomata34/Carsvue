@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     getCarList() {
-      const path = "http://192.168.1.112:7070/api/v1.0/cars/";
+      const path = "http://localhost:7070/api/v1.0/cars/";
       axios
         .get(path, {
           params: {
