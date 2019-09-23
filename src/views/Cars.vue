@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar></NavBar>
-    <Jumbotron title="Web Car Scraper" pathTo="/" titleButton="Go to Home"></Jumbotron>
+    <Jumbotron title="Web Car Scraper" pathTo="home" titleButton="Go to Home"></Jumbotron>
     <div class="container mt-4">
       <hr />
       <div class="row">

@@ -23,14 +23,18 @@
           <strong>Year:</strong>
           {{car.year}}
         </p>
-        <p>
+        <p v-if="car.price>0">
           <strong>Price:</strong>
-          ${{car.price}}
+          {{car.price | currency}}
+        </p>
+        <p v-else>
+          <strong>Price:</strong>
+          No Available
         </p>
       </div>
     </div>
-    <button class="btn btn-success">View More</button>
-    <a class="btn btn-dark" :href="car.url_to_site" role="button">Origin Website</a>
+    <router-link class="btn btn-primary" :to="{ name: 'detail', params: { carID: car.id }}">View More</router-link>
+    <a class="btn btn-dark" target="_blank" :href="car.url_to_site" role="button">Origin Website</a>
   </div>
 </template>
 
@@ -60,9 +64,8 @@ p {
 }
 
 .btn {
-  border: 0;
+  border: 1 solid black;
   border-radius: 0;
-  color: white;
   font-weight: 800;
 }
 

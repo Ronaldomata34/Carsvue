@@ -113,6 +113,14 @@ export default {
       maxMileage: 300000
     };
   },
+  mounted() {
+    if (localStorage.makeSelected) {
+      this.makeSelected = localStorage.makeSelected;
+    }
+    if (localStorage.models) {
+      this.models = localStorage.models;
+    }
+  },
   methods: {
     getMakes() {
       const path = "http://localhost:7070/api/v1.0/makes/";
@@ -165,6 +173,7 @@ export default {
   },
   created() {
     this.getMakes();
+    this.getFilter()
   }
 };
 </script>

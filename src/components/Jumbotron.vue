@@ -2,12 +2,17 @@
   <div class="jumbotron">
     <div class="container">
       <h1 class="display-4">{{title}}</h1>
-      <p
-        class="lead"
-      ></p>
+
       <hr class="my-4" />
       <p></p>
-      <router-link class="btn btn-primary" :to="pathTo">{{titleButton}}</router-link>
+      <div class="d-flex justify-content-between">
+        <router-link class="btn btn-primary" :to="{ name: pathTo}">{{titleButton}}</router-link>
+        <a
+          target="blank"
+          href="https://pdfhost.io/v/+ikVsWz7z_Scan1655pdf.pdf"
+          class="btn btn-success"
+        >View PDF</a>
+      </div>
     </div>
   </div>
 </template>
@@ -18,7 +23,7 @@ export default {
   props: {
     title: String,
     titleButton: String,
-    pathTo: String,
+    pathTo: String
   }
 };
 </script>
@@ -27,7 +32,8 @@ export default {
 .jumbotron {
   color: white;
   border-radius: 0;
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../assets/img/jumbotron-img-cars.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../assets/img/jumbotron-img-cars.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

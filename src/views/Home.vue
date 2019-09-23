@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <Footer></Footer>
+    <EndFooter></EndFooter>
   </div>
 </template>
 
@@ -21,7 +21,7 @@
 import NavBar from "@/components/NavBar.vue";
 import Jumbotron from "@/components/Jumbotron.vue";
 import CardCar from "@/components/Car/CardCar.vue";
-import Footer from "@/components/Footer.vue";
+import EndFooter from "@/components/EndFooter.vue";
 
 import axios from "axios";
 
@@ -31,7 +31,7 @@ export default {
     NavBar,
     Jumbotron,
     CardCar,
-    Footer
+    EndFooter
   },
   data() {
     return {

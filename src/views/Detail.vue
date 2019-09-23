@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-for="car in data" :key="car.id" class="card p-4 mb-4">
+    <NavBar></NavBar>
+    <Jumbotron title="Web Car Scraper" pathTo="cars" titleButton="Search Cars"></Jumbotron>
+    <div class="container">
+      <h1 class="mb-4">Details</h1>
       <div class="row no-gutters">
         <div class="col-md-4">
           <img v-if="car.main_picture" :src="car.main_picture" class="card-img" alt />
@@ -16,10 +19,7 @@
             <div class="row">
               <div class="col-md-6">
                 <strong>Make:</strong>
-                {{car.model.make}}
-              </div>
-              <div class="col-md-6">
-                <i class="fa fa-comment"></i> <span> {{car.comments}}</span>
+                {{car.make}}
               </div>
               <div class="col-md-6">
                 <strong>Model:</strong>
@@ -33,22 +33,16 @@
                 <strong>Mileage:</strong>
                 {{car.mileage}}
               </div>
-              <div v-if="car.price>0" class="col-md-6">
+              <div v-if="car.price>0" class="col-md-6" >
                 <strong>Price:</strong>
-                {{car.price | currency}}
+                {{car.price | currency }}
               </div>
-              <div v-else class="col-md-6">
+              <div v-else class="col-md-6" >
                 <strong>Price:</strong>
                 No Available
               </div>
               <div class="col-md-6">
                 <a class="btn btn-success" target="blank" :href="car.url_to_site">Origin Website</a>
-              </div>
-              <div class="col-md-6">
-                <router-link
-                  class="btn btn-info"
-                  :to="{ name: 'detail', params: { carID: car.id }}"
-                >View More</router-link>
               </div>
             </div>
             <hr />
@@ -58,16 +52,55 @@
           </div>
         </div>
       </div>
+      <Comment :carId="car.id"></Comment>
     </div>
+    <EndFooter></EndFooter>
   </div>
 </template>
 
 <script>
+// @ is an alias to /src
+//import HelloWorld from '@/components/HelloWorld.vue'
+import NavBar from "@/components/NavBar.vue";
+import Comment from "@/components/Comment.vue";
+import Jumbotron from "@/components/Jumbotron.vue";
+import EndFooter from "@/components/EndFooter.vue";
+
+import axios from "axios";
+
 export default {
-  name: "ListCar",
-  props: ["data"]
+  name: "detail",
+  components: {
+    NavBar,
+    Jumbotron,
+    EndFooter,
+    Comment
+  },
+  data() {
+    return {
+      car: {}
+    };
+  },
+  methods: {
+    getCarDetails() {
+      const Id = this.$route.params.carID;
+      const path = "http://localhost:7070/api/v1.0/cars/";
+      const fullpath = path + Id + "/";
+      console.log(fullpath);
+      axios
+        .get(fullpath)
+        .then(response => {
+          console.log(response.data);
+          this.car = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
+  created() {
+    this.getCarDetails();
+  }
 };
 </script>
 
-<style lang="css" scoped>
-</style>

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    name: 'Footer'
+    name: 'EndFooter'
 }
 </script>
 
@@ -19,5 +19,6 @@ export default {
     text-align: center;
     background-color: #3f3b3b;
     border-top: .05rem solid #e5e5e5;
+    margin-top: 100px
 }
 </style>
